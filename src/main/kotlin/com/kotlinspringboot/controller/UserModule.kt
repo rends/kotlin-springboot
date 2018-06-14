@@ -39,10 +39,14 @@ class UserController{
     @GetMapping("/find/{id}")
     fun find(@PathVariable id:Int)= userRepository.findById(id)
 
+    @GetMapping("/findUsernameAndStatus/{username}/{status}")
+    fun findUsernameAndStatus(@PathVariable status:Boolean,@PathVariable username: String)= userRepository.findByUsernameAndStatus(username,status)
+
     @DeleteMapping("/delete/{id}")
     fun delete(@PathVariable id:Int)= userRepository.deleteById(id)
 }
 
 interface UserRepository:JpaRepository<User,Int> {
     fun findByUsername(username:String):User
+    fun findByUsernameAndStatus(username: String,status: Boolean):User?
 }
