@@ -34,7 +34,7 @@ class UserController{
     fun insert(@RequestBody user:User)= userRepository.save(user)
 
     @GetMapping("/findByName/{username}")
-    fun insert(@PathVariable username:String)= userRepository.findByUsername(username)
+    fun findByUsername(@PathVariable username:String)= userRepository.findByUsername(username)
 
     @GetMapping("/find/{id}")
     fun find(@PathVariable id:Int)= userRepository.findById(id)
